@@ -1,0 +1,21 @@
+<h2>Posts</h2>
+<ul  *ngIf="showallPost">
+  <li *ngFor="let post of posts">
+    <h6>{{post.title}} </h6> <h6>{{post.body}}</h6>
+    <button class="btn btn-danger m-2 d-flex justify-content-between text-center" (click)="deletePost(post.id)">Delete</button>
+    <button class="btn btn-primary" (click)="toggleEditForm(post)">Edit</button>
+  </li>
+</ul>
+
+<!-- for creating new post -->
+<form *ngIf="showCreateForm" (ngSubmit)="createPost()">
+    <input type="text" [(ngModel)]="newPost.title" placeholder="Enter post title">
+    <button class="btn btn-primary" type="submit">Create</button>
+</form>
+
+<!-- for editing existing post -->
+<form *ngIf="showEditForm" (ngSubmit)="editPost()">
+    <input type="text" [(ngModel)]="updatedPost.title" placeholder="Enter updated post title">
+    <button class="btn btn-primary" type="submit">Edit</button>
+</form>
+
